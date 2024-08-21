@@ -1,16 +1,16 @@
 ﻿var numbers = new List<int> { 5, 3, 2, 8, 16, 7 };
-SimpleTuple<int, int> minAndMax = GetMinAndMax(numbers);
+Tuple<int, int> minAndMax = GetMinAndMax(numbers);
 
-var twoStrings = new SimpleTuple<string, string>("aaa", "bbb");
-var differentTypes = new SimpleTuple<string, int>("aaa", 11);
-var threeTypes = new SimpleTuple<string, int, bool>("aaa", 11, false);
+var twoStrings = new Tuple<string, string>("aaa", "bbb");
+var differentTypes = new Tuple<string, int>("aaa", 11);
+var threeTypes = new Tuple<string, int, bool>("aaa", 11, false);
 
-Console.WriteLine("Smallest number is " + minAndMax.ItemOne);
-Console.WriteLine("Largest number is " + minAndMax.ItemTwo);
+Console.WriteLine("Smallest number is " + minAndMax.Item1);
+Console.WriteLine("Largest number is " + minAndMax.Item2);
 
 Console.ReadKey();
 
-SimpleTuple<int, int> GetMinAndMax(IEnumerable<int> input)
+Tuple<int, int> GetMinAndMax(IEnumerable<int> input)
 {
     if (IsEmpty(input))
     {
@@ -33,7 +33,7 @@ SimpleTuple<int, int> GetMinAndMax(IEnumerable<int> input)
         }
     }
 
-    return new SimpleTuple<int, int>(min, max);
+    return new Tuple<int, int>(min, max);
 }
 
 bool IsEmpty(IEnumerable<int> input)
@@ -46,27 +46,27 @@ bool IsEmpty(IEnumerable<int> input)
     return true;
 }
 
-public class SimpleTuple<T1, T2>
-{
-    public T1 ItemOne { get; }
-    public T2 ItemTwo { get; }
+//public class SimpleTuple<T1, T2>
+//{
+//    public T1 ItemOne { get; }
+//    public T2 ItemTwo { get; }
 
-    public SimpleTuple(T1 itemOne, T2 itemTwo)
-    {
-        this.ItemOne = itemOne;
-        this.ItemTwo = itemTwo;
-    }
-}
-public class SimpleTuple<T1, T2, T3>
-{
-    public T1 ItemOne { get; }
-    public T2 ItemTwo { get; }
-    public T3 ItemThree { get; }
+//    public SimpleTuple(T1 itemOne, T2 itemTwo)
+//    {
+//        this.ItemOne = itemOne;
+//        this.ItemTwo = itemTwo;
+//    }
+//}
+//public class SimpleTuple<T1, T2, T3>
+//{
+//    public T1 ItemOne { get; }
+//    public T2 ItemTwo { get; }
+//    public T3 ItemThree { get; }
 
-    public SimpleTuple(T1 itemOne, T2 itemTwo, T3 itemThree)
-    {
-        this.ItemOne = itemOne;
-        this.ItemTwo = itemTwo;
-        this.ItemThree = itemThree;
-    }
-}
+//    public SimpleTuple(T1 itemOne, T2 itemTwo, T3 itemThree)
+//    {
+//        this.ItemOne = itemOne;
+//        this.ItemTwo = itemTwo;
+//        this.ItemThree = itemThree;
+//    }
+//}
