@@ -1,11 +1,16 @@
 ﻿var numbers = new List<int> { 5, 3, 2, 8, 16, 7 };
-TwoInts minAndMax = GetMinAndMax(numbers);
-Console.WriteLine("Smallest number is " + minAndMax.IntOne);
-Console.WriteLine("Largest number is " + minAndMax.IntTwo);
+SimpleTuple<int, int> minAndMax = GetMinAndMax(numbers);
+
+var twoStrings = new SimpleTuple<string, string>("aaa", "bbb");
+var differentTypes = new SimpleTuple<string, int>("aaa", 11);
+var threeTypes = new SimpleTuple<string, int, bool>("aaa", 11, false);
+
+Console.WriteLine("Smallest number is " + minAndMax.ItemOne);
+Console.WriteLine("Largest number is " + minAndMax.ItemTwo);
 
 Console.ReadKey();
 
-TwoInts GetMinAndMax(IEnumerable<int> input)
+SimpleTuple<int, int> GetMinAndMax(IEnumerable<int> input)
 {
     if (IsEmpty(input))
     {
@@ -28,7 +33,7 @@ TwoInts GetMinAndMax(IEnumerable<int> input)
         }
     }
 
-    return new TwoInts(min, max);
+    return new SimpleTuple<int, int>(min, max);
 }
 
 bool IsEmpty(IEnumerable<int> input)
@@ -41,14 +46,27 @@ bool IsEmpty(IEnumerable<int> input)
     return true;
 }
 
-public class TwoInts
+public class SimpleTuple<T1, T2>
 {
-    public int IntOne { get; }
-    public int IntTwo { get; }
+    public T1 ItemOne { get; }
+    public T2 ItemTwo { get; }
 
-    public TwoInts(int intOne, int intTwo)
+    public SimpleTuple(T1 itemOne, T2 itemTwo)
     {
-        this.IntOne = intOne;
-        this.IntTwo = intTwo;
+        this.ItemOne = itemOne;
+        this.ItemTwo = itemTwo;
+    }
+}
+public class SimpleTuple<T1, T2, T3>
+{
+    public T1 ItemOne { get; }
+    public T2 ItemTwo { get; }
+    public T3 ItemThree { get; }
+
+    public SimpleTuple(T1 itemOne, T2 itemTwo, T3 itemThree)
+    {
+        this.ItemOne = itemOne;
+        this.ItemTwo = itemTwo;
+        this.ItemThree = itemThree;
     }
 }
