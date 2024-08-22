@@ -18,14 +18,14 @@ var validEmployees = GetOnlyValid(employees);
 
 foreach (var person in validEmployees)
 {
-    ((Employee)person).GoToWork(); // cast here
+    person.GoToWork(); // NO cast here
 }
 
 Console.ReadKey();
 
-IEnumerable<Person> GetOnlyValid(IEnumerable<Person> persons)
+IEnumerable<TPerson> GetOnlyValid<TPerson>(IEnumerable<TPerson> persons) where TPerson : Person // Added generics and dirived class constrain here
 {
-    var results = new List<Person>();
+    var results = new List<TPerson>();
 
     foreach (var person in persons)
     {
