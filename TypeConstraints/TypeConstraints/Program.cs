@@ -10,7 +10,7 @@ Console.ReadKey();
 IEnumerable<T> CreateCollectionsOfRandomLength<T>(int maxLength) where T : new()
 {
     var length = 100_000_000; //new Random().Next(maxLength + 1);
-    var result = new List<T>();
+    var result = new List<T>(1000);
     
     for (int i = 0; i < length; ++i)
     {
