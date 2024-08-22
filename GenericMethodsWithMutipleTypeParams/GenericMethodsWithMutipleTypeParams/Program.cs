@@ -3,6 +3,9 @@
 var decimals = new List<decimal> { 1.1m, 0.5m, 22.5m, 12m };
 var ints = decimals.ConvertTo<decimal, int>();
 
+var floats = new List<float> { 1.4f, -100.01f };
+var longs = floats.ConvertTo<float, long>();
+
 Console.ReadKey();
 
 static class ListExtensions
@@ -18,7 +21,8 @@ static class ListExtensions
 
         foreach (var item in input)
         {
-            result.Add((TTarget)item);
+            TTarget itemAfterCasting = (TTarget)Convert.ChangeType(item, typeof(TTarget));
+            result.Add(itemAfterCasting);
         }
 
         return result;
