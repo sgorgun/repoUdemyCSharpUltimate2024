@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericMethodsWithMutipleTypeParams", "GenericMethodsWithMutipleTypeParams\GenericMethodsWithMutipleTypeParams.csproj", "{3BC029E2-2A1D-4F31-873A-2A45C833BDDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BC029E2-2A1D-4F31-873A-2A45C833BDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC029E2-2A1D-4F31-873A-2A45C833BDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC029E2-2A1D-4F31-873A-2A45C833BDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC029E2-2A1D-4F31-873A-2A45C833BDDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2D30C82-508C-42DA-B7DA-666A1FB3D878}
+	EndGlobalSection
+EndGlobal
