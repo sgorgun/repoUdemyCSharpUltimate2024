@@ -12,12 +12,15 @@ var people = new List<Person>
 };
 people.Sort();
 
- var employees = new List<Employee>
+var employees = new List<Employee>
 {
     new Employee {Name = "John", YearOfBirth = 1980},
     new Employee {Name = "Anna", YearOfBirth = 1880},
     new Employee {Name = "Bill", YearOfBirth = 2980},
 };
+
+var john = new Person { Name = "John", YearOfBirth = 1980 };
+var anna = new Person { Name = "Anna", YearOfBirth = 1880 };
 
 
 var validPeople = GetOnlyValid(people);
@@ -28,7 +31,24 @@ foreach (var person in validEmployees)
     person.GoToWork(); // NO cast here
 }
 
+PrintInOrder(10, 5);
+PrintInOrder("bbb", "aaa");
+PrintInOrder(anna, john);
+
+
 Console.ReadKey();
+
+void PrintInOrder<T>(T first, T second) where T: IComparable<T> // Arguguments of generic type constrained
+{
+    if (first.CompareTo(second) > 0)
+    {
+        Console.WriteLine(second + " " + first);
+    }
+    else
+    {
+        Console.WriteLine(first + " " + second);
+    }
+}
 
 IEnumerable<TPerson> GetOnlyValid<TPerson>(IEnumerable<TPerson> persons) where TPerson : Person // Added generics and dirived class constrain here
 {
@@ -50,7 +70,9 @@ public class Person : IComparable<Person>
     public string Name { get; init; }
     public int YearOfBirth { get; init; }
 
-    public int CompareTo(Person? other)
+    public override string ToString() => $"{Name} born in {YearOfBirth}"; // Don't foget it for correct
+
+    public int CompareTo(Person other)
     {
         if (this.YearOfBirth < other.YearOfBirth)
         {
