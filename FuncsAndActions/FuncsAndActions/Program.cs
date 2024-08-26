@@ -1,26 +1,33 @@
-﻿int a = 5;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+int a = 5;
 var john = new Person("John", "Smith", 1981);
 
 var numbers = new[] { 1, 4, 7, 19, 2 };
-Console.WriteLine("IsAnyLagerThan10?" + IsanyLagerThan10(numbers));
-Console.WriteLine("IsAnyEven?" + IsAnyEven(numbers));
+Console.WriteLine("IsAnyLagerThan10?" + IsAny(numbers, IsAnyLagerThan10));
+Console.WriteLine("IsAnyEven?" + IsAny(numbers, IsAnyEven));
+
+Func<int, DateTime, string, decimal> someFunc; // all parameters are input instead of last. Last parameter is output.
+Action<string, string, bool> someAction; // all parameters are input. Action use for void action without output.
 
 Console.ReadKey();
 
-bool IsanyLagerThan10(IEnumerable<int> numbers) //method1
+bool IsAny(IEnumerable<int> numbers, Func<int, bool> predicate)
 {
     foreach (var number in numbers)
     {
-        if (number > 10) return true; //difference
+        if (predicate(number)) return true;
     }
     return false;
-}bool IsAnyEven(IEnumerable<int> numbers) // method2
+}
+
+bool IsAnyLagerThan10(int number) //method1
 {
-    foreach (var number in numbers) 
-    {
-        if (number % 2 == 0) return true; //difference
-    }
-    return false;
+    return number > 10;
+}
+bool IsAnyEven(int number) // method2
+{
+    return number % 2 == 0;
 }
 
 public class Person(string firstName, string secondName, int yearOfBirth)
