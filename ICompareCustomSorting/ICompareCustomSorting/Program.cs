@@ -2,7 +2,7 @@
 
 namespace Coding.Exercise
 {
-    public class SortedList<T> //your code goes here
+    public class SortedList<T> where T : IComparable<T>
     {
         public IEnumerable<T> Items { get; }
 
@@ -14,13 +14,29 @@ namespace Coding.Exercise
         }
     }
 
-    public class FullName // your code goes here
+    public class FullName : IComparable<FullName>
     {
         public string FirstName { get; init; }
         public string LastName { get; init; }
 
         public override string ToString() => $"{FirstName} {LastName}";
 
-        //your code hoes here
+        public int CompareTo(FullName other)
+        {
+            if (other == null) return 1;
+
+            // Compare by last name
+
+            int lastNameColmparsion = this.LastName.CompareTo(other.LastName);
+
+            if (lastNameColmparsion != 0)
+            {
+                return lastNameColmparsion;
+            }
+
+            // if last names are same, compare by first name
+
+            return this.FirstName.CompareTo(other.FirstName);
+        }
     }
 }
