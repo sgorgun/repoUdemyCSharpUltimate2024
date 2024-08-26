@@ -4,7 +4,10 @@ int a = 5;
 var john = new Person("John", "Smith", 1981);
 
 var numbers = new[] { 1, 4, 7, 19, 2 };
-Console.WriteLine("IsAnyLagerThan10?" + IsAny(numbers, IsAnyLagerThan10));
+
+Func<int, bool> predicate = IsAnyLagerThan10;
+
+Console.WriteLine("IsAnyLagerThan10?" + IsAny(numbers, predicate));
 Console.WriteLine("IsAnyEven?" + IsAny(numbers, IsAnyEven));
 
 Func<int, DateTime, string, decimal> someFunc; // all parameters are input instead of last. Last parameter is output.
