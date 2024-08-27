@@ -37,5 +37,5 @@ public class Person(string firstName, string secondName, int yearOfBirth)
 {
     private string FirstName { get; set; } = firstName;
     private string SecondName { get; set; } = secondName;
-    private int yearOfBirth { get; set; } = yearOfBirth;
+    private int YearOfBirth { get; set; } = yearOfBirth;
 }
