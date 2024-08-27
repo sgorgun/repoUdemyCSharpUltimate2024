@@ -4,7 +4,7 @@ namespace Coding.Exercise
 {
     public class Exercise
     {
-        public Func<string, int> GetLength = // your code goes here;
-        public Func<int> GetRandomNumberBetween1And10 = // your code goes here;
+        public Func<string, int> GetLength = n => n.Length;
+        public Func<int> GetRandomNumberBetween1And10 = () => new Random().Next(1, 11);
     }
 }
