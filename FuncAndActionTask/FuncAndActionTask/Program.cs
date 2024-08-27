@@ -6,9 +6,9 @@ namespace Coding.Exercise
     {
         public void TestMethod()
         {
-            /*your code goes here*/ someMethod1 = Method1;
-            /*your code goes here*/ someMethod2 = Method2;
-            /*your code goes here*/ someMethod3 = Method3;
+            Func<int, bool, double> someMethod1 = Method1;
+            Func<DateTime> someMethod2 = Method2;
+            Action<string, string> someMethod3 = Method3;
         }
 
         public double Method1(int a, bool b) => 0;
