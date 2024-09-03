@@ -1,4 +1,5 @@
-﻿var dataDownloader = new SlowDataDownloader();
+﻿//var dataDownloader = new SlowDataDownloader();// Don't using caching
+IDataDownloader dataDownloader = new CachigDataDownloader(new SlowDataDownloader());// Using caching
 
 Console.WriteLine(dataDownloader.DownloadData("id1"));
 Console.WriteLine(dataDownloader.DownloadData("id2"));
@@ -23,7 +24,22 @@ public class Cache<TKey,TData>
 
         return _cacheData[key];
     }
+}
 
+public class CachigDataDownloader : IDataDownloader
+{
+    private readonly IDataDownloader _dataDownloader;
+    private readonly Cache<string, string> _cache = new();
+
+    public CachigDataDownloader(IDataDownloader dataDownloader)
+    {
+        _dataDownloader = dataDownloader;
+    }
+
+    public string DownloadData(string resourceId)
+    {
+        return _cache.Get(resourceId, _dataDownloader.DownloadData);
+    }
 }
 
 public interface IDataDownloader
@@ -32,14 +48,8 @@ public interface IDataDownloader
 }
 
 public class SlowDataDownloader : IDataDownloader
-{
-    private readonly Cache<string, string> _cache = new();
+{ 
     public string DownloadData(string resourceId)
-    {
-        return _cache.Get(resourceId, DownloadDataWithoutCaching);
-    }
-    
-    private string DownloadDataWithoutCaching(string resourceId)
     {
         Thread.Sleep(1000);
         return $"Some data for {resourceId}";
