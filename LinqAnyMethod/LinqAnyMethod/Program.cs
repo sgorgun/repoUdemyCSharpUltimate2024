@@ -7,9 +7,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        var numbers = new List<int> { 5, 9, 2, 12, 6 };
-        var evenNumbers = numbers.Where(number => number % 2 == 0);
-        Printer.Print(evenNumbers, nameof(evenNumbers));
+        var numbers = new List<int> { 5, 9, 2, 12, 6, 2 };
+        var numbersWithoutDuplicate = numbers.Distinct();
+        Printer.Print(numbersWithoutDuplicate, nameof(numbersWithoutDuplicate));
+
+
+        //var evenNumbers = numbers.Where(number => number % 2 == 0);
+        //Printer.Print(evenNumbers, nameof(evenNumbers));
 
         //bool areAllLargerThanZero = numbers.Any(number => number > 10);
         //Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
@@ -40,15 +44,15 @@ class Program
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
 
-        var petsHavierThan10Kg = pets.Where(pet => pet.Weight > 10);
-        Printer.Print(petsHavierThan10Kg, nameof(petsHavierThan10Kg));
+        //var petsHavierThan10Kg = pets.Where(pet => pet.Weight > 10);
+        //Printer.Print(petsHavierThan10Kg, nameof(petsHavierThan10Kg));
         
-        var petsHavierThan100Kg = pets.Where(pet => pet.Weight > 100);
-        Printer.Print(petsHavierThan100Kg, nameof(petsHavierThan100Kg));
+        //var petsHavierThan100Kg = pets.Where(pet => pet.Weight > 100);
+        //Printer.Print(petsHavierThan100Kg, nameof(petsHavierThan100Kg));
 
-        var indexesSelectedByUser = new[] { 1, 6, 7 };
-        var petsSelectedByUserAndLighterThan5Kilos = pets.Where((pet, index) => pet.Weight < 5 && indexesSelectedByUser.Contains(index));
-        Printer.Print(petsSelectedByUserAndLighterThan5Kilos, nameof(petsSelectedByUserAndLighterThan5Kilos));
+        //var indexesSelectedByUser = new[] { 1, 6, 7 };
+        //var petsSelectedByUserAndLighterThan5Kilos = pets.Where((pet, index) => pet.Weight < 5 && indexesSelectedByUser.Contains(index));
+        //Printer.Print(petsSelectedByUserAndLighterThan5Kilos, nameof(petsSelectedByUserAndLighterThan5Kilos));
 
         //var lastDog = pets.Last(pet => pet.Type == PetType.Dog);
         //Printer.Print(lastDog.Name, nameof(lastDog));
