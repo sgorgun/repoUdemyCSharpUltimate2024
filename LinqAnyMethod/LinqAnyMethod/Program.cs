@@ -7,16 +7,19 @@ class Program
 {
     static void Main(string[] args)
     {
-        //var numbers = new List<int> { 5, 9, 2, 12, 6 };
+        var numbers = new List<int> { 5, 9, 2, 12, 6 };
+        var evenNumbers = numbers.Where(number => number % 2 == 0);
+        Printer.Print(evenNumbers, nameof(evenNumbers));
+
         //bool areAllLargerThanZero = numbers.Any(number => number > 10);
         //Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
 
-        var differentNumbers = new[] { 16, 8, 9, -1, 2 };
-        var firstNumber = differentNumbers.First();
-        Printer.Print(firstNumber, nameof(firstNumber));
+        //var differentNumbers = new[] { 16, 8, 9, -1, 2 };
+        //var firstNumber = differentNumbers.First();
+        //Printer.Print(firstNumber, nameof(firstNumber));
 
-        var firstOddNumber = differentNumbers.First(number => number % 2 == 1);
-        Printer.Print(firstOddNumber, nameof(firstOddNumber));
+        //var firstOddNumber = differentNumbers.First(number => number % 2 == 1);
+        //Printer.Print(firstOddNumber, nameof(firstOddNumber));
 
         //var isSevenPresent = differentNumbers.Contains(7);
         //Printer.Print(isSevenPresent, nameof(isSevenPresent));
@@ -37,16 +40,26 @@ class Program
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
 
-        var lastDog = pets.Last(pet => pet.Type == PetType.Dog);
-        Printer.Print(lastDog.Name, nameof(lastDog));
+        var petsHavierThan10Kg = pets.Where(pet => pet.Weight > 10);
+        Printer.Print(petsHavierThan10Kg, nameof(petsHavierThan10Kg));
+        
+        var petsHavierThan100Kg = pets.Where(pet => pet.Weight > 100);
+        Printer.Print(petsHavierThan100Kg, nameof(petsHavierThan100Kg));
 
-        var lastPetHavierThan100 = pets.LastOrDefault(pet => pet.Weight > 100);
-        Printer.Print(lastPetHavierThan100, nameof(lastPetHavierThan100));
+        var indexesSelectedByUser = new[] { 1, 6, 7 };
+        var petsSelectedByUserAndLighterThan5Kilos = pets.Where((pet, index) => pet.Weight < 5 && indexesSelectedByUser.Contains(index));
+        Printer.Print(petsSelectedByUserAndLighterThan5Kilos, nameof(petsSelectedByUserAndLighterThan5Kilos));
 
-        var haviestPetInCollections = pets.
-            OrderByDescending(pet => pet.Weight)
-            .First();
-        Printer.Print(haviestPetInCollections.Name, nameof(haviestPetInCollections));
+        //var lastDog = pets.Last(pet => pet.Type == PetType.Dog);
+        //Printer.Print(lastDog.Name, nameof(lastDog));
+
+        //var lastPetHavierThan100 = pets.LastOrDefault(pet => pet.Weight > 100);
+        //Printer.Print(lastPetHavierThan100, nameof(lastPetHavierThan100));
+
+        //var haviestPetInCollections = pets.
+        //    OrderByDescending(pet => pet.Weight)
+        //    .First();
+        //Printer.Print(haviestPetInCollections.Name, nameof(haviestPetInCollections));
 
         ////OrderBy creates a copy of the collection,
         ////which is ordered by the given criteria
