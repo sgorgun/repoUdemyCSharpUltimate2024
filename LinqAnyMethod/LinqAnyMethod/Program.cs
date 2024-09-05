@@ -7,8 +7,8 @@ class Program
     static void Main(string[] args)
     {
         var numbers = new List<int> { 5, 9, 2, 12, 6 };
-        bool isLargerThan10 = numbers.Any(number => number > 10);
-        Console.WriteLine(isLargerThan10);
+        bool areAllLargerThanZero = numbers.Any(number => number > 10);
+        Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
 
         var pets = new[]
         {
@@ -22,17 +22,23 @@ class Program
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
 
-        var isAnyPetNamedBruce = pets.Any(pet => pet.Name == "Bruce");
-        Printer.Print(isAnyPetNamedBruce, nameof(isAnyPetNamedBruce));
+        var doAllHaveNoneEmptyNames = pets.All(pet => !string.IsNullOrWhiteSpace(pet.Name));
+        Printer.Print(doAllHaveNoneEmptyNames, nameof(doAllHaveNoneEmptyNames));
+        
+        var doAllPetsAreCats = pets.All(pet => pet.Type == PetType.Cat);
+        Printer.Print(doAllPetsAreCats, nameof(doAllPetsAreCats));
 
-        var isAnyFish = pets.Any(pet => pet.Type == PetType.Fish);
-        Printer.Print(isAnyFish, nameof(isAnyFish));
+        //var isAnyPetNamedBruce = pets.Any(pet => pet.Name == "Bruce");
+        //Printer.Print(isAnyPetNamedBruce, nameof(isAnyPetNamedBruce));
 
-        var isThereVerySpecificPet = pets.Any(pet => pet.Name.Length > 6 && pet.Number % 2 == 0);
-        Printer.Print(isThereVerySpecificPet, nameof(isThereVerySpecificPet));
+        //var isAnyFish = pets.Any(pet => pet.Type == PetType.Fish);
+        //Printer.Print(isAnyFish, nameof(isAnyFish));
 
-        var isNotEmpty = pets.Any();
-        Printer.Print(isNotEmpty, nameof(isNotEmpty)); //Return true if collection is not empty.
+        //var isThereVerySpecificPet = pets.Any(pet => pet.Name.Length > 6 && pet.Number % 2 == 0);
+        //Printer.Print(isThereVerySpecificPet, nameof(isThereVerySpecificPet));
+
+        //var isNotEmpty = pets.Any();
+        //Printer.Print(isNotEmpty, nameof(isNotEmpty)); //Return true if collection is not empty.
 
         Console.ReadKey();
     }
