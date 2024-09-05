@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class Program
 {
@@ -10,13 +11,13 @@ class Program
         //bool areAllLargerThanZero = numbers.Any(number => number > 10);
         //Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
 
-        var differentNumbers = new[] { 16, 8, 9, -1, 2 };
-        var isSevenPresent = differentNumbers.Contains(7);
-        Printer.Print(isSevenPresent, nameof(isSevenPresent));
+        //var differentNumbers = new[] { 16, 8, 9, -1, 2 };
+        //var isSevenPresent = differentNumbers.Contains(7);
+        //Printer.Print(isSevenPresent, nameof(isSevenPresent));
 
-        var words = new[] { "lion", "tiger", "snow leopard" };
-        bool isTgerPresent = words.Contains("tiger");
-        Printer.Print(isTgerPresent, nameof(isTgerPresent));
+        //var words = new[] { "lion", "tiger", "snow leopard" };
+        //bool isTgerPresent = words.Contains("tiger");
+        //Printer.Print(isTgerPresent, nameof(isTgerPresent));
 
         var pets = new[]
         {
@@ -29,6 +30,41 @@ class Program
             new Pet(7, "Storm", PetType.Cat, 0.9f),
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
+
+        //OrderBy creates a copy of the collection,
+        //which is ordered by the given criteria
+        var petsOrderedByName = pets.OrderBy(pet => pet.Name);
+        Printer.Print(petsOrderedByName, nameof(petsOrderedByName));
+
+        var petsOrderedByIdDescending = pets.OrderByDescending(pet => pet.Number);
+        Printer.Print(petsOrderedByIdDescending, nameof(petsOrderedByIdDescending));
+
+        //numbers of words we can simply order by themselves
+        var numbers = new[] { 16, 8, 9, -1, 2 };
+        var orderedNumbers = numbers.OrderBy(number => number);
+        Printer.Print(orderedNumbers, nameof(orderedNumbers));
+
+        var words = new[] { "lion", "tiger", "snow leopard" };
+        var orderedWords = words.OrderBy(word => word);
+        Printer.Print(orderedWords, nameof(orderedWords));
+
+        //we can order by some criteria, and then by other criteria
+        var petsOrderedByTypeThenName = pets
+            .OrderBy(pet => pet.Type)
+            .ThenBy(pet => pet.Name);
+        Printer.Print(petsOrderedByTypeThenName, nameof(petsOrderedByTypeThenName));
+
+        var petsOrderedByTypeDescendingThenIdDescending = pets
+            .OrderByDescending(pet => pet.Type)
+            .ThenByDescending(pet => pet.Number);
+        Printer.Print(petsOrderedByTypeDescendingThenIdDescending,
+            nameof(petsOrderedByTypeDescendingThenIdDescending));
+
+        //we can use the Reverse method to Reverse the order of the collection
+        var petsReversed = pets.Reverse();
+        Printer.Print(petsReversed, nameof(petsReversed));
+
+
 
         //var countOfDogs = pets.Count(pet => pet.Type == PetType.Dog);
         //Console.WriteLine(countOfDogs);
@@ -44,7 +80,7 @@ class Program
 
         //var doAllHaveNoneEmptyNames = pets.All(pet => !string.IsNullOrWhiteSpace(pet.Name));
         //Printer.Print(doAllHaveNoneEmptyNames, nameof(doAllHaveNoneEmptyNames));
-        
+
         //var doAllPetsAreCats = pets.All(pet => pet.Type == PetType.Cat);
         //Printer.Print(doAllPetsAreCats, nameof(doAllPetsAreCats));
 
@@ -87,10 +123,71 @@ public enum PetType
     Dog
 }
 
-class Printer
+public static class Printer
 {
-    public static void Print(bool value, string name)
+    public static void Print<T>(T item, string itemName)
     {
-        Console.WriteLine($"{name}: {value}");
+        Console.WriteLine($"{itemName}: {item}");
+    }
+
+    public static void Print<T>(IEnumerable<T> collection, string collectionName)
+    {
+        Print(collection, collectionName, "collection");
+    }
+
+    public static void Print<T>(IOrderedEnumerable<T> collection, string collectionName)
+    {
+        Print(collection as IEnumerable<T>, collectionName, "collection");
+    }
+
+    public static void Print<T>(List<T> collection, string collectionName)
+    {
+        Print(collection as IEnumerable<T>, collectionName, "collection");
+    }
+
+    public static void Print<T>(HashSet<T> hashSet, string hashSetName)
+    {
+        Print(hashSet, hashSetName, "HashSet");
+    }
+
+    private static void Print<T>(IEnumerable<T> collection, string collectionName, string collectionType)
+    {
+        Console.WriteLine($"{collectionName}:");
+        if (collection.Any())
+        {
+            Console.WriteLine(string.Join("\n", collection.Select(elem => elem.ToString())));
+        }
+        else
+        {
+            Console.WriteLine($"The {collectionType} is empty!");
+        }
+    }
+
+    public static void Print<TKey, TValue>(Dictionary<TKey, TValue> dictionary, string dictionaryName)
+    {
+        Console.WriteLine($"{dictionaryName}:");
+        if (dictionary.Any())
+        {
+            Console.WriteLine(string.Join("\n", dictionary.Select(
+                elem => $"Key: {elem.Key}, Value: {elem.Value}")));
+        }
+        else
+        {
+            Console.WriteLine("The dictionary is empty!");
+        }
+    }
+
+    public static void Print<TKey, TValue>(ILookup<TKey, TValue> lookup, string lookupName)
+    {
+        Console.WriteLine($"{lookupName}:");
+        if (lookup.Any())
+        {
+            Console.WriteLine(string.Join("\n", lookup.Select(
+                elem => $"Key: {elem.Key}, Values (count: {lookup[elem.Key].Count()}): {string.Join(", ", lookup[elem.Key])}")));
+        }
+        else
+        {
+            Console.WriteLine("The lookup is empty!");
+        }
     }
 }
