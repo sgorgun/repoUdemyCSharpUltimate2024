@@ -10,6 +10,14 @@ class Program
         //bool areAllLargerThanZero = numbers.Any(number => number > 10);
         //Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
 
+        var differentNumbers = new[] { 16, 8, 9, -1, 2 };
+        var isSevenPresent = differentNumbers.Contains(7);
+        Printer.Print(isSevenPresent, nameof(isSevenPresent));
+
+        var words = new[] { "lion", "tiger", "snow leopard" };
+        bool isTgerPresent = words.Contains("tiger");
+        Printer.Print(isTgerPresent, nameof(isTgerPresent));
+
         var pets = new[]
         {
             new Pet(1, "Hannibal", PetType.Fish, 1.1f),
@@ -22,17 +30,17 @@ class Program
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
 
-        var countOfDogs = pets.Count(pet => pet.Type == PetType.Dog);
-        Console.WriteLine(countOfDogs);
+        //var countOfDogs = pets.Count(pet => pet.Type == PetType.Dog);
+        //Console.WriteLine(countOfDogs);
 
-        var countOfPetsNamedBruce = pets.Count(pet => pet.Name == "Bruce");
-        Console.WriteLine("Bruce: " + countOfPetsNamedBruce);
+        //var countOfPetsNamedBruce = pets.Count(pet => pet.Name == "Bruce");
+        //Console.WriteLine("Bruce: " + countOfPetsNamedBruce);
 
-        var allSmallDogs = pets.Count(pet => pet.Type == PetType.Dog && pet.Weight < 10);
-        Console.WriteLine("Small dogs: " + allSmallDogs);
+        //var allSmallDogs = pets.Count(pet => pet.Type == PetType.Dog && pet.Weight < 10);
+        //Console.WriteLine("Small dogs: " + allSmallDogs);
 
-        var allPetsCount = pets.Count();
-        Console.WriteLine("All pets: " + allPetsCount);
+        //var allPetsCount = pets.Count();
+        //Console.WriteLine("All pets: " + allPetsCount);
 
         //var doAllHaveNoneEmptyNames = pets.All(pet => !string.IsNullOrWhiteSpace(pet.Name));
         //Printer.Print(doAllHaveNoneEmptyNames, nameof(doAllHaveNoneEmptyNames));
