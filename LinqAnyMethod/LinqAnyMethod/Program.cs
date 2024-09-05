@@ -11,7 +11,13 @@ class Program
         //bool areAllLargerThanZero = numbers.Any(number => number > 10);
         //Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
 
-        //var differentNumbers = new[] { 16, 8, 9, -1, 2 };
+        var differentNumbers = new[] { 16, 8, 9, -1, 2 };
+        var firstNumber = differentNumbers.First();
+        Printer.Print(firstNumber, nameof(firstNumber));
+
+        var firstOddNumber = differentNumbers.First(number => number % 2 == 1);
+        Printer.Print(firstOddNumber, nameof(firstOddNumber));
+
         //var isSevenPresent = differentNumbers.Contains(7);
         //Printer.Print(isSevenPresent, nameof(isSevenPresent));
 
@@ -31,38 +37,49 @@ class Program
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
 
-        //OrderBy creates a copy of the collection,
-        //which is ordered by the given criteria
-        var petsOrderedByName = pets.OrderBy(pet => pet.Name);
-        Printer.Print(petsOrderedByName, nameof(petsOrderedByName));
+        var lastDog = pets.Last(pet => pet.Type == PetType.Dog);
+        Printer.Print(lastDog.Name, nameof(lastDog));
 
-        var petsOrderedByIdDescending = pets.OrderByDescending(pet => pet.Number);
-        Printer.Print(petsOrderedByIdDescending, nameof(petsOrderedByIdDescending));
+        var lastPetHavierThan100 = pets.LastOrDefault(pet => pet.Weight > 100);
+        Printer.Print(lastPetHavierThan100, nameof(lastPetHavierThan100));
 
-        //numbers of words we can simply order by themselves
-        var numbers = new[] { 16, 8, 9, -1, 2 };
-        var orderedNumbers = numbers.OrderBy(number => number);
-        Printer.Print(orderedNumbers, nameof(orderedNumbers));
+        var haviestPetInCollections = pets.
+            OrderByDescending(pet => pet.Weight)
+            .First();
+        Printer.Print(haviestPetInCollections.Name, nameof(haviestPetInCollections));
 
-        var words = new[] { "lion", "tiger", "snow leopard" };
-        var orderedWords = words.OrderBy(word => word);
-        Printer.Print(orderedWords, nameof(orderedWords));
+        ////OrderBy creates a copy of the collection,
+        ////which is ordered by the given criteria
+        //var petsOrderedByName = pets.OrderBy(pet => pet.Name);
+        //Printer.Print(petsOrderedByName, nameof(petsOrderedByName));
 
-        //we can order by some criteria, and then by other criteria
-        var petsOrderedByTypeThenName = pets
-            .OrderBy(pet => pet.Type)
-            .ThenBy(pet => pet.Name);
-        Printer.Print(petsOrderedByTypeThenName, nameof(petsOrderedByTypeThenName));
+        //var petsOrderedByIdDescending = pets.OrderByDescending(pet => pet.Number);
+        //Printer.Print(petsOrderedByIdDescending, nameof(petsOrderedByIdDescending));
 
-        var petsOrderedByTypeDescendingThenIdDescending = pets
-            .OrderByDescending(pet => pet.Type)
-            .ThenByDescending(pet => pet.Number);
-        Printer.Print(petsOrderedByTypeDescendingThenIdDescending,
-            nameof(petsOrderedByTypeDescendingThenIdDescending));
+        ////numbers of words we can simply order by themselves
+        //var numbers = new[] { 16, 8, 9, -1, 2 };
+        //var orderedNumbers = numbers.OrderBy(number => number);
+        //Printer.Print(orderedNumbers, nameof(orderedNumbers));
 
-        //we can use the Reverse method to Reverse the order of the collection
-        var petsReversed = pets.Reverse();
-        Printer.Print(petsReversed, nameof(petsReversed));
+        //var words = new[] { "lion", "tiger", "snow leopard" };
+        //var orderedWords = words.OrderBy(word => word);
+        //Printer.Print(orderedWords, nameof(orderedWords));
+
+        ////we can order by some criteria, and then by other criteria
+        //var petsOrderedByTypeThenName = pets
+        //    .OrderBy(pet => pet.Type)
+        //    .ThenBy(pet => pet.Name);
+        //Printer.Print(petsOrderedByTypeThenName, nameof(petsOrderedByTypeThenName));
+
+        //var petsOrderedByTypeDescendingThenIdDescending = pets
+        //    .OrderByDescending(pet => pet.Type)
+        //    .ThenByDescending(pet => pet.Number);
+        //Printer.Print(petsOrderedByTypeDescendingThenIdDescending,
+        //    nameof(petsOrderedByTypeDescendingThenIdDescending));
+
+        ////we can use the Reverse method to Reverse the order of the collection
+        //var petsReversed = pets.Reverse();
+        //Printer.Print(petsReversed, nameof(petsReversed));
 
 
 
