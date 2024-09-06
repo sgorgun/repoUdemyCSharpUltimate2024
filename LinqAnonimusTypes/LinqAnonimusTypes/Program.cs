@@ -6,15 +6,17 @@
 };
 
 var result = listsNumbers
-    .Select(listsNumbers => new Tuple<int, double>
-    (
-        listsNumbers.Count(),
-        listsNumbers.Average()
-    ))
-    .OrderByDescending(countAndAverage => countAndAverage.Item2)
+    .Select(listsNumbers => new
+    {
+        Count = listsNumbers.Count(),
+        Average = listsNumbers.Average()
+    })
+    .OrderByDescending(countAndAverage => countAndAverage.Average)
     .Select(countAndAverage =>
-        $"Count is: {countAndAverage.Item1}, " +
-        $"Average is: {countAndAverage.Item2}");
+        $"Count is: {countAndAverage.Count}, " +
+        $"Average is: {countAndAverage.Average}");
+
+var pet = new { Name = "Light", Type = "Dog" }; // propperties of anonimus type are readonly and have public getters.
 
 Console.WriteLine(string.Join(Environment.NewLine, result));
 
