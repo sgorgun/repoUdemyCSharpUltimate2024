@@ -6,23 +6,16 @@
 };
 
 var result = listsNumbers
-    .Select(listsNumbers => new CountAndAverage
-    {
-        Count = listsNumbers.Count(),
-        Average = listsNumbers.Average()
-    })
-    .OrderByDescending(countAndAverage => countAndAverage.Average)
+    .Select(listsNumbers => new Tuple<int, double>
+    (
+        listsNumbers.Count(),
+        listsNumbers.Average()
+    ))
+    .OrderByDescending(countAndAverage => countAndAverage.Item2)
     .Select(countAndAverage =>
-        $"Count is: {countAndAverage.Count}, " +
-        $"Average is: {countAndAverage.Average}");
+        $"Count is: {countAndAverage.Item1}, " +
+        $"Average is: {countAndAverage.Item2}");
 
 Console.WriteLine(string.Join(Environment.NewLine, result));
 
 Console.ReadKey();
-
-public class CountAndAverage
-{
-    public int Count { get; set; }
-
-    public double Average { get; set; }
-}
