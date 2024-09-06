@@ -8,9 +8,14 @@ class Program
     static void Main(string[] args)
     {
         var numbers = new List<int> { 5, 9, 2, 12, 6, 2 };
-        var numbersWithoutDuplicate = numbers.Distinct();
-        Printer.Print(numbersWithoutDuplicate, nameof(numbersWithoutDuplicate));
 
+        var doubleNumbers = numbers.Select(x => x * 2);
+        Printer.Print(doubleNumbers, nameof(doubleNumbers));
+
+        var numbersAsStrings = numbers.Select(x => x.ToString());
+
+        //var numbersWithoutDuplicate = numbers.Distinct();
+        //Printer.Print(numbersWithoutDuplicate, nameof(numbersWithoutDuplicate));
 
         //var evenNumbers = numbers.Where(number => number % 2 == 0);
         //Printer.Print(evenNumbers, nameof(evenNumbers));
@@ -28,7 +33,11 @@ class Program
         //var isSevenPresent = differentNumbers.Contains(7);
         //Printer.Print(isSevenPresent, nameof(isSevenPresent));
 
-        //var words = new[] { "lion", "tiger", "snow leopard" };
+        var words = new[] { "lion", "tiger", "snow leopard" };
+        var toUpperCase = words.Select(x => x.ToUpper());
+
+        var numberedWords = words.Select((word, index) => $"{index + 1}. {word}");
+
         //bool isTgerPresent = words.Contains("tiger");
         //Printer.Print(isTgerPresent, nameof(isTgerPresent));
 
@@ -43,6 +52,21 @@ class Program
             new Pet(7, "Storm", PetType.Cat, 0.9f),
             new Pet(8, "Nyan", PetType.Cat, 2.2f)
         };
+
+        var weights = pets.Select(pet => pet.Weight);
+
+        var heavyPetTypes = pets
+            .Where(pet => pet.Weight > 4)
+            .Select(pet => pet.Type)
+            .Distinct();
+
+        var petsInitials = pets
+            .OrderBy(pet => pet.Name)
+            .Select(pet => $"{pet.Name.First()}."); //First will select first letter from string.
+
+        var petsData = pets.Select(pet =>
+            $"Pet named {pet.Name}, of type {pet.Type} " +
+            $"and weight {pet.Weight}");
 
         //var petsHavierThan10Kg = pets.Where(pet => pet.Weight > 10);
         //Printer.Print(petsHavierThan10Kg, nameof(petsHavierThan10Kg));
