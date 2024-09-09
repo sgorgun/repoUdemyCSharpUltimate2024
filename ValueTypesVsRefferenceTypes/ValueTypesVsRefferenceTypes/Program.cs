@@ -21,8 +21,16 @@ Console.WriteLine("John's age is " + john.Age);
 MethodWithOutParameter(out int otherNumber);
 Console.WriteLine("otherNumber: " + otherNumber);
 
+var list = new List<int> {  1, 2, 3 };
+AddOneToList(ref list);
+Console.WriteLine(string.Join(", ", list));
+
 Console.ReadKey();
 
+void AddOneToList(ref List<int> numbers) // null usung ref
+{
+    numbers = null;
+}
 void MethodWithOutParameter(out int number)
 {
     number = 10;
