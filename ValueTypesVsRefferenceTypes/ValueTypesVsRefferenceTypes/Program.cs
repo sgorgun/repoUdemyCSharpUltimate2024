@@ -12,15 +12,23 @@ var john = new Person { Name = "John", Age = 34 };
 //Console.WriteLine("John's age is " + john.Age);
 //Console.WriteLine("Person's age is " + person.Age);
 
-AddOneToNumber(number);
+AddOneToNumber(ref number);
 AddOneToPerson(john);
 
 Console.WriteLine("Number is " + number);
 Console.WriteLine("John's age is " + john.Age);
 
+MethodWithOutParameter(out int otherNumber);
+Console.WriteLine("otherNumber: " + otherNumber);
+
 Console.ReadKey();
 
-void AddOneToNumber(int number)
+void MethodWithOutParameter(out int number)
+{
+    number = 10;
+}
+
+void AddOneToNumber(ref int number)
 {
     ++number;
 }
