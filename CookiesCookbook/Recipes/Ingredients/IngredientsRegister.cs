@@ -24,14 +24,21 @@ public class IngredientsRegister : IIngredientsRegister
     /// <returns>ingredient from All(Base of all ingredients) or null if it cant find</returns>
     public Ingredient GetById(int id)
     {
-        foreach (var ingredient in All)
+        var allIngredientsWithGivenId = All
+            .Where(ingredient => ingredient.Id == id);
+
+        if (allIngredientsWithGivenId.Count() > 1)
         {
-            if (ingredient.Id == id)
-            {
-                return ingredient;
-            }
+            throw new InvalidOperationException(
+                $"More than one ingredients have ID equal to {id}.");
         }
 
-        return null;
+        //if (All.Select(ingredients => ingredients.Id).Distinct().Count() != All.Count())
+        //{
+        //    throw new InvalidOperationException(
+        //        $"Some ingredients have duplicates IDs.");
+        //}
+
+        return allIngredientsWithGivenId.FirstOrDefault();
     }
 }
