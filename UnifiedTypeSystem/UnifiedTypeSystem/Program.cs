@@ -1,4 +1,11 @@
-﻿var variousObjects = new List<object>
+﻿int number = 5;
+var person = new Person { Name = "Ted", Age = 19 };
+object boxedNumber = number; //boxing (implicitely)
+int unboxedNumber = (int)boxedNumber; // unboxing (explicitly)
+IComparable<int> intAsComparable = number; // boxing - interface is refference type
+
+
+var variousObjects = new List<object>//boxing
 {
     1,
     1.5m,
