@@ -1,13 +1,13 @@
 ﻿const string filePath = "file.txt";
-var writer = new FileWriter(filePath);
-writer.Write("some text");
-writer.Write("some other text");
-writer.Dispose();
+using (var writer = new FileWriter(filePath))
+{
+    writer.Write("some text");
+    writer.Write("some other text");
+}
 
-var reader = new SpecificLineFromTextReader(filePath);
+using var reader = new SpecificLineFromTextReader(filePath);
 var third = reader.ReadLineNumber(3);
 var fourth = reader.ReadLineNumber(4);
-reader.Dispose();
 
 Console.WriteLine("Third line is: " + third);
 Console.WriteLine("Fourth line is: " + fourth);
