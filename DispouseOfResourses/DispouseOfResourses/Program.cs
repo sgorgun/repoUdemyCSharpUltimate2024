@@ -2,10 +2,12 @@
 var writer = new FileWriter(filePath);
 writer.Write("some text");
 writer.Write("some other text");
+writer.Dispose();
 
 var reader = new SpecificLineFromTextReader(filePath);
 var third = reader.ReadLineNumber(3);
 var fourth = reader.ReadLineNumber(4);
+reader.Dispose();
 
 Console.WriteLine("Third line is: " + third);
 Console.WriteLine("Fourth line is: " + fourth);
@@ -13,21 +15,27 @@ Console.WriteLine("Fourth line is: " + fourth);
 Console.WriteLine("Press any key for close.");
 Console.ReadKey();
 
-public class FileWriter
+public class FileWriter : IDisposable
 {
     public readonly StreamWriter _streamWriter;
     public FileWriter(string filePath)
     {
         _streamWriter = new StreamWriter(filePath, true);
     }
+
     public void Write(string text)
     {
         _streamWriter.WriteLine(text);
         _streamWriter.Flush();
     }
+
+    public void Dispose()
+    {
+        _streamWriter.Dispose();
+    }
 }
 
-public class SpecificLineFromTextReader
+public class SpecificLineFromTextReader : IDisposable
 {
     private readonly StreamReader _streamReader;
     public SpecificLineFromTextReader(string filePath)
@@ -46,5 +54,9 @@ public class SpecificLineFromTextReader
         }
 
         return _streamReader.ReadLine();
+    }
+    public void Dispose()
+    {
+        _streamReader.Dispose();
     }
 }
