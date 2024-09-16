@@ -1,4 +1,4 @@
-﻿const string path = @"C:\Users\serge\Downloads\sampleData.csv";
+﻿const string path = @"sampleData.csv";
 
 var data = new CsvReader().Read(path);
 
