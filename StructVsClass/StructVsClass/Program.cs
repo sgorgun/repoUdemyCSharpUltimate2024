@@ -1,12 +1,12 @@
 ﻿
 var point = new Point(10, 20);
-point.X++;
-MoveToRightBy1Unit(point);
+//point.X++;
+//MoveToRightBy1Unit(point);
 
 
 
 var anotherPoint = point;
-anotherPoint.Y = 100;
+//anotherPoint.Y = 100;
 
 Console.WriteLine("point is: " + point);
 Console.WriteLine("anotherPoint is: " + anotherPoint);
@@ -28,10 +28,10 @@ fishyStruct2.Numbers.Clear();
 
 Console.ReadKey();
 
-void MoveToRightBy1Unit(Point point)
-{
-    point.X++;
-}
+//void MoveToRightBy1Unit(Point point)
+//{
+//    point.X++;
+//}
 
 void SomeMethodVal<T>(T param) where T : struct
 {
