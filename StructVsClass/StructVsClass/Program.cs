@@ -1,4 +1,6 @@
 ﻿
+using System.Globalization;
+
 var point = new Point(10, 20);
 //point.X++;
 //MoveToRightBy1Unit(point);
@@ -25,6 +27,8 @@ var fishyStruct1 = new FishyStruct { Numbers = new List<int> { 1, 2, 3 } };
 var fishyStruct2 = fishyStruct1;
 fishyStruct2.Numbers.Clear();
 
+var dateTime = new DateTime(2023, 6, 7);
+var dateWeekAfter = dateTime.AddDays(7);
 
 Console.ReadKey();
 
