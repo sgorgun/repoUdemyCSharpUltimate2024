@@ -6,7 +6,8 @@ var point = new Point(10, 20);
 //MoveToRightBy1Unit(point);
 var pointMoved = point with { X = point.X + 1 };
 
-
+var pet = new { Name = "Hanibal", Type = "fish" }; // anonimus type whith nonedestructiwe mutation
+var asCrab = pet with { Type = "crab" };
 
 var anotherPoint = point;
 //anotherPoint.Y = 100;
