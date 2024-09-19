@@ -4,6 +4,7 @@ using System.Globalization;
 var point = new Point(10, 20);
 //point.X++;
 //MoveToRightBy1Unit(point);
+var pointMoved = point with { X = point.X + 1 };
 
 
 
