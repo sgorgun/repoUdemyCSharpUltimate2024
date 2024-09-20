@@ -16,13 +16,13 @@ Console.WriteLine("point is: " + point);
 Console.WriteLine("anotherPoint is: " + anotherPoint);
 
 SomeMethodVal(5);
-SomeMethodRef(new Person());
+//SomeMethodRef(new Person());
 
 
 //Point nullPoint = null;
 Person nullPerson = null;
 
-var person = new Person();
+//var person = new Person();
 var point1 = new Point();
 
 var fishyStruct1 = new FishyStruct { Numbers = new List<int> { 1, 2, 3 } };
@@ -31,6 +31,17 @@ fishyStruct2.Numbers.Clear();
 
 var dateTime = new DateTime(2023, 6, 7);
 var dateWeekAfter = dateTime.AddDays(7);
+
+var john = new Person(1, "John");
+var theSameAsJohn = new Person(1, "John");
+var asJohn = john;
+Console.WriteLine("Are reference equal? " +
+    object.ReferenceEquals(john, theSameAsJohn));
+Console.WriteLine("Are reference equal? " +
+    object.ReferenceEquals(john, asJohn)); 
+
+Console.WriteLine(object.ReferenceEquals(1, 1)); //Value
+Console.WriteLine(object.ReferenceEquals(null, null));
 
 Console.ReadKey();
 
@@ -74,9 +85,9 @@ class Person
     public int Id { get; init; }
     public string Name { get; init; }
 
-    //public Person(int id, string name)
-    //{
-    //    Id = id;
-    //    Name = name;
-    //}
+    public Person(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
 }
