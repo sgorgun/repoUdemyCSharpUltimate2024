@@ -90,11 +90,15 @@ readonly struct Point(int x, int y) //The better if struct to be readonly
     public int X { get; init; } = x; //inmutable struct 
     public int Y { get; init; } = y;
 
-    public override bool Equals(object? obj)
+    public bool Equals(Point other) // more specialised/ Will be used first. Without boxing
+    {
+        return X == other.X && Y == other.Y;
+    }
+
+    public override bool Equals(object? obj) // less specialised. Withh boxing.
     {
         return obj is Point point &&
-               X == point.X &&
-               Y == point.Y;
+               Equals(point);
     }
 
     //~Point()
