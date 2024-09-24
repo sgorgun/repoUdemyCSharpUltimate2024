@@ -109,4 +109,10 @@ class Person
         Id = id;
         Name = name;
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Person other &&
+            Id == other.Id;
+    }
 }
