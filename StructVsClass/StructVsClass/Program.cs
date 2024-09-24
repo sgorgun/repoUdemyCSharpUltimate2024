@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 //var point = new Point(10, 20);
@@ -88,6 +89,13 @@ readonly struct Point(int x, int y) //The better if struct to be readonly
 {
     public int X { get; init; } = x; //inmutable struct 
     public int Y { get; init; } = y;
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Point point &&
+               X == point.X &&
+               Y == point.Y;
+    }
 
     //~Point()
     //{
