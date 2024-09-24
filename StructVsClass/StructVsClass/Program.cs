@@ -85,7 +85,7 @@ struct FishyStruct
     public List<int> Numbers { get; init; }
 }
 
-readonly struct Point(int x, int y) //The better if struct to be readonly
+readonly struct Point(int x, int y) : IEquatable<Point> //The better if struct to be readonly
 {
     public int X { get; init; } = x; //inmutable struct 
     public int Y { get; init; } = y;
