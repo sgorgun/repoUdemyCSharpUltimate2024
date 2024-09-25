@@ -44,28 +44,30 @@ using System.Globalization;
 //Console.WriteLine(object.ReferenceEquals(1, 1)); //Value
 //Console.WriteLine(object.ReferenceEquals(null, null));
 
-Console.WriteLine("1.Equals(1): " + 1.Equals(1));
-Console.WriteLine("1.Equals(2): " + 1.Equals(2));
-Console.WriteLine("1.Equals(null): " + 1.Equals(null));
-Console.WriteLine("\"abc\".Equals(\"abc\"): " + "abc".Equals("abc"));
-Console.WriteLine();
+//Console.WriteLine("1.Equals(1): " + 1.Equals(1));
+//Console.WriteLine("1.Equals(2): " + 1.Equals(2));
+//Console.WriteLine("1.Equals(null): " + 1.Equals(null));
+//Console.WriteLine("\"abc\".Equals(\"abc\"): " + "abc".Equals("abc"));
+//Console.WriteLine();
 
 var point1 = new Point(1, 5);
 var point2 = new Point(2, 4);
-var added = point1.Add(point2);
+var added = point1 + point2;
 
-Console.WriteLine("point1.Equals(point2): " + point1.Equals(point2));
-Console.WriteLine();
+Console.WriteLine("point1 == point2: " + (point1 == point2));
 
-var john = new Person(1, "John");
-var theSameAsJohn = new Person(1, "John");
-var marie = new Person(2, "Marie");
+//Console.WriteLine("point1.Equals(point2): " + point1.Equals(point2));
+//Console.WriteLine();
 
-Console.WriteLine("john.Equals(theSameAsJohn): " + john.Equals(theSameAsJohn));
-Console.WriteLine("john.Equals(marie): " + john.Equals(marie));
-Console.WriteLine("john.Equals(null): " + john.Equals(null));
+//var john = new Person(1, "John");
+//var theSameAsJohn = new Person(1, "John");
+//var marie = new Person(2, "Marie");
 
-Console.ReadKey();
+//Console.WriteLine("john.Equals(theSameAsJohn): " + john.Equals(theSameAsJohn));
+//Console.WriteLine("john.Equals(marie): " + john.Equals(marie));
+//Console.WriteLine("john.Equals(null): " + john.Equals(null));
+
+//Console.ReadKey();
 
 //void MoveToRightBy1Unit(Point point)
 //{
@@ -110,8 +112,13 @@ readonly struct Point(int x, int y) : IEquatable<Point> //The better if struct t
 
     public override string ToString() => $"X: {X}, Y: {Y}";
 
-    public Point Add(Point point2) =>
-        new Point(X + point2.X, Y + point2.Y);
+    public static Point operator +(Point a, Point b) =>
+        new Point(a.X + b.X, a.Y + b.Y);
+
+    public static bool operator ==(Point point1, Point point2) =>
+        point1.Equals(point2);
+    public static bool operator !=(Point point1, Point point2) =>
+        !point1.Equals(point2);
 }
 
 class Person
