@@ -67,7 +67,16 @@ Console.WriteLine("point1 == point2: " + (point1 == point2));
 //Console.WriteLine("john.Equals(marie): " + john.Equals(marie));
 //Console.WriteLine("john.Equals(null): " + john.Equals(null));
 
-//Console.ReadKey();
+int tenAsInt = 10;
+decimal tenAsDecimal = tenAsInt;
+ 
+decimal someDecimal = 20.01m;
+int someInt = (int)someDecimal;
+
+var tuple = Tuple.Create(10, 20);
+Point point = tuple; 
+
+Console.ReadKey();
 
 //void MoveToRightBy1Unit(Point point)
 //{
@@ -119,6 +128,8 @@ readonly struct Point(int x, int y) : IEquatable<Point> //The better if struct t
         point1.Equals(point2);
     public static bool operator !=(Point point1, Point point2) =>
         !point1.Equals(point2);
+    public static implicit operator Point(Tuple<int, int> tuple) =>
+        new Point(tuple.Item1, tuple.Item2); // or explisit
 }
 
 class Person
