@@ -51,7 +51,9 @@ Console.WriteLine("\"abc\".Equals(\"abc\"): " + "abc".Equals("abc"));
 Console.WriteLine();
 
 var point1 = new Point(1, 5);
-var point2 = new Point(1, 5);
+var point2 = new Point(2, 4);
+var added = point1.Add(point2);
+
 Console.WriteLine("point1.Equals(point2): " + point1.Equals(point2));
 Console.WriteLine();
 
@@ -107,6 +109,9 @@ readonly struct Point(int x, int y) : IEquatable<Point> //The better if struct t
     //}
 
     public override string ToString() => $"X: {X}, Y: {Y}";
+
+    public Point Add(Point point2) =>
+        new Point(X + point2.X, Y + point2.Y);
 }
 
 class Person
