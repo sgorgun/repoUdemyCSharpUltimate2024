@@ -50,11 +50,11 @@ using System.Globalization;
 //Console.WriteLine("\"abc\".Equals(\"abc\"): " + "abc".Equals("abc"));
 //Console.WriteLine();
 
-var point1 = new Point(1, 5);
-var point2 = new Point(2, 4);
-var added = point1 + point2;
+//var point1 = new Point(1, 5);
+//var point2 = new Point(2, 4);
+//var added = point1 + point2;
 
-Console.WriteLine("point1 == point2: " + (point1 == point2));
+//Console.WriteLine("point1 == point2: " + (point1 == point2));
 
 //Console.WriteLine("point1.Equals(point2): " + point1.Equals(point2));
 //Console.WriteLine();
@@ -67,14 +67,51 @@ Console.WriteLine("point1 == point2: " + (point1 == point2));
 //Console.WriteLine("john.Equals(marie): " + john.Equals(marie));
 //Console.WriteLine("john.Equals(null): " + john.Equals(null));
 
-int tenAsInt = 10;
-decimal tenAsDecimal = tenAsInt;
+//int tenAsInt = 10;
+//decimal tenAsDecimal = tenAsInt;
  
-decimal someDecimal = 20.01m;
-int someInt = (int)someDecimal;
+//decimal someDecimal = 20.01m;
+//int someInt = (int)someDecimal;
 
-var tuple = Tuple.Create(10, 20);
-Point point = tuple; 
+//var tuple = Tuple.Create(10, 20);
+//Point point = tuple;
+
+var hash1 = 123.GetHashCode();
+var hash2 = "abc".GetHashCode();
+var hash3 = hash2;
+Console.WriteLine(hash1);
+Console.WriteLine(hash2);
+Console.WriteLine(hash3);
+Console.WriteLine();
+
+var person = new Person(1, "John");
+var person1 = new Person(1, "John");
+var person2 = new Person(1, "John");
+var hashPerson = person.GetHashCode();
+var hashPerson1 = person1.GetHashCode();
+var hashPerson2 = person2.GetHashCode();
+var hashPersonId = person.Id.GetHashCode();
+var hashPersonName = person.Name.GetHashCode();
+Console.WriteLine("Person: " + hashPerson);
+Console.WriteLine("Person1: " + hashPerson1);
+Console.WriteLine("Person2: " + hashPerson2);
+Console.WriteLine(hashPersonId);
+Console.WriteLine(hashPersonName);
+Console.WriteLine();
+
+var point = new Point(1, 2);
+var point2 = new Point(1, 2);
+var hashPoint = point.GetHashCode();
+var hashPoint2 = point2.GetHashCode();
+var hashPoint3 = hashPoint;
+Console.WriteLine("hashPoint: " + hashPoint);
+Console.WriteLine("hashPoint2: " + hashPoint2);
+Console.WriteLine("hashPoint3: " + hashPoint3);
+Console.WriteLine();
+
+var dictionary = new Dictionary<Point, string>();
+dictionary[new Point(10, 20)] = "abc";
+
 
 Console.ReadKey();
 
