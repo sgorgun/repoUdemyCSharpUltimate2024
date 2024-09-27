@@ -112,16 +112,24 @@ using System.Globalization;
 //var dictionary = new Dictionary<Point, string>();
 //dictionary[new Point(10, 20)] = "abc";
 
-var dictionary = new Dictionary<Person, int>();
-var martin = new Person(6, "Martin");
-dictionary[martin] = 5;
-var theSameAsMartin = new Person(6, "Martin");
+//var dictionary = new Dictionary<Person, int>();
+//var martin = new Person(6, "Martin");
+//dictionary[martin] = 5;
+//var theSameAsMartin = new Person(6, "Martin");
 
-Console.WriteLine(martin.GetHashCode());
-Console.WriteLine(theSameAsMartin.GetHashCode());
+//Console.WriteLine(martin.GetHashCode());
+//Console.WriteLine(theSameAsMartin.GetHashCode());
 
 //Console.WriteLine(dictionary[theSameAsMartin]);
 
+var dictionary = new Dictionary<Point, int>();
+var point1 = new Point(27, 1);
+dictionary[point1] = 99;
+var point2 = new Point(27, 1);
+
+Console.WriteLine(dictionary[point2]);
+Console.WriteLine(point1.GetHashCode());
+Console.WriteLine(point2.GetHashCode());
 
 Console.ReadKey();
 
