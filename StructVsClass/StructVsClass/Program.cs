@@ -123,23 +123,40 @@ using System.Globalization;
 //Console.WriteLine(dictionary[theSameAsMartin]);
 
 
-var point1 = new Point(27, 1);
-var point2 = new Point(27, 1);
-var point3 = new Point(6, -1);
+//var point1 = new Point(27, 1);
+//var point2 = new Point(27, 1);
+//var point3 = new Point(6, -1);
 
-Console.WriteLine(point1.GetHashCode());
-Console.WriteLine(point2.GetHashCode());
-Console.WriteLine(point3.GetHashCode());
+//Console.WriteLine(point1.GetHashCode());
+//Console.WriteLine(point2.GetHashCode());
+//Console.WriteLine(point3.GetHashCode());
 
-Console.WriteLine();
+//Console.WriteLine();
 
-var person1 = new Person(6, "Martin");
-var person2 = new Person(6, "Martin");
-var person3 = new Person(7, "Bella");
+//var person1 = new Person(6, "Martin");
+//var person2 = new Person(6, "Martin");
+//var person3 = new Person(7, "Bella");
 
-Console.WriteLine(person1.GetHashCode());
-Console.WriteLine(person2.GetHashCode());
-Console.WriteLine(person3.GetHashCode());
+//Console.WriteLine(person1.GetHashCode());
+//Console.WriteLine(person2.GetHashCode());
+//Console.WriteLine(person3.GetHashCode());
+
+var tuple1 = new Tuple<string, bool>("aaa", false);
+var tuple2 = Tuple.Create(10, true);
+var tuple3 = Tuple.Create(10, true);
+Console.WriteLine(tuple2==tuple3);
+Console.WriteLine(tuple2.Equals(tuple3));
+Console.WriteLine(tuple2.GetHashCode());
+Console.WriteLine(tuple3.GetHashCode());
+
+var number = tuple1.Item1;
+//tuple2.Item1 = 20; // imutable
+
+var valueTuple1 = new ValueTuple<int, string>(1, "bbb");
+var valueTuple2 = (Number: 5, Text: "ccc");
+valueTuple2.Item1 = 20; //value tuple is mutable
+valueTuple2.Text = "ddd";
+
 
 Console.ReadKey();
 
