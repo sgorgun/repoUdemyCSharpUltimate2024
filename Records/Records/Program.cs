@@ -3,8 +3,19 @@ var weatherData = new WeatherData(25.1m, 65);
 Console.WriteLine(weatherData);
 Console.ReadKey();
 
-public record WeatherData(decimal Temperature, int Humidity); // Positional record - No body
+public record WeatherData // None positional record - with body
+{
+    public decimal Temperature { get; set; }
+    public int Humidity { get; }
 
+    public WeatherData(decimal temperature, int humidity)
+    {
+        Temperature = temperature;
+        Humidity = humidity;
+    }
+
+    public void SomeMethod() { }
+}
 //public class WeatherData : IEquatable<WeatherData?>
 //{
 //    public decimal Temperature { get; }
