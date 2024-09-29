@@ -122,16 +122,16 @@ using System.Globalization;
 
 //Console.WriteLine(dictionary[theSameAsMartin]);
 
-var dictionary = new Dictionary<Point, int>();
-var point1 = new Point(27, 1);
-dictionary[point1] = 99;
-var point2 = new Point(27, 1);
 
-Console.WriteLine(dictionary[point2]);
+var point1 = new Point(27, 1);
+var point2 = new Point(27, 1);
+var point3 = new Point(6, -1);
+
 Console.WriteLine(point1.GetHashCode());
 Console.WriteLine(point2.GetHashCode());
+Console.WriteLine(point3.GetHashCode());
 
-Console.ReadKey();
+Console.WriteLine();
 
 //void MoveToRightBy1Unit(Point point)
 //{
@@ -167,6 +167,11 @@ readonly struct Point(int x, int y) : IEquatable<Point> //The better if struct t
     {
         return obj is Point point &&
                Equals(point);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y);
     }
 
     //~Point()
