@@ -1,11 +1,16 @@
-﻿
-var weatherData = new WeatherData(25.1m, 65);
-Console.WriteLine(weatherData);
+﻿//var weatherData = new WeatherData(25.1m, 65);
+//Console.WriteLine(weatherData);
 
-var warmerWeatherData = weatherData with { Temperature = 30 };
+//var warmerWeatherData = weatherData with { Temperature = 30 };
+
+var rectangle = new Rectangle(3, 4);
+//rectangle.A = 30;
+
 Console.ReadKey();
 
-public record WeatherData(decimal Temperature, int Humidity); // Positional record - No body
+public record WeatherData(decimal Temperature, int Humidity);
+public readonly record struct Rectangle(int A, int B);
+
 
 //public class WeatherData : IEquatable<WeatherData?>
 //{
@@ -49,4 +54,3 @@ public record WeatherData(decimal Temperature, int Humidity); // Positional reco
 //    {
 //        return !(left == right);
 //    }
-}
