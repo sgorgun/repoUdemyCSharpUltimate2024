@@ -133,6 +133,16 @@ Console.WriteLine(point3.GetHashCode());
 
 Console.WriteLine();
 
+var person1 = new Person(6, "Martin");
+var person2 = new Person(6, "Martin");
+var person3 = new Person(7, "Bella");
+
+Console.WriteLine(person1.GetHashCode());
+Console.WriteLine(person2.GetHashCode());
+Console.WriteLine(person3.GetHashCode());
+
+Console.ReadKey();
+
 //void MoveToRightBy1Unit(Point point)
 //{
 //    point.X++;
@@ -209,5 +219,10 @@ class Person
     {
         return obj is Person other &&
             Id == other.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return Id;
     }
 }
