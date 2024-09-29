@@ -3,46 +3,48 @@ var weatherData = new WeatherData(25.1m, 65);
 Console.WriteLine(weatherData);
 Console.ReadKey();
 
-public class WeatherData : IEquatable<WeatherData?>
-{
-    public decimal Temperature { get; }
-    public int Humidity { get; }
+public record WeatherData(decimal Temperature, int Humidity); // Positional record - No body
 
-    public WeatherData(decimal temperature, int humidity)
-    {
-        Temperature = temperature;
-        Humidity = humidity;
-    }
+//public class WeatherData : IEquatable<WeatherData?>
+//{
+//    public decimal Temperature { get; }
+//    public int Humidity { get; }
 
-    public override string ToString()
-    {
-        return $"Temperature: {Temperature}, Humidity: {Humidity}";
-    }
+//    public WeatherData(decimal temperature, int humidity)
+//    {
+//        Temperature = temperature;
+//        Humidity = humidity;
+//    }
 
-    public override bool Equals(object? obj)
-    {
-        return Equals(obj as WeatherData);
-    }
+//    public override string ToString()
+//    {
+//        return $"Temperature: {Temperature}, Humidity: {Humidity}";
+//    }
 
-    public bool Equals(WeatherData? other)
-    {
-        return other is not null &&
-               Temperature == other.Temperature &&
-               Humidity == other.Humidity;
-    }
+//    public override bool Equals(object? obj)
+//    {
+//        return Equals(obj as WeatherData);
+//    }
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Temperature, Humidity);
-    }
+//    public bool Equals(WeatherData? other)
+//    {
+//        return other is not null &&
+//               Temperature == other.Temperature &&
+//               Humidity == other.Humidity;
+//    }
 
-    public static bool operator ==(WeatherData? left, WeatherData? right)
-    {
-        return EqualityComparer<WeatherData>.Default.Equals(left, right);
-    }
+//    public override int GetHashCode()
+//    {
+//        return HashCode.Combine(Temperature, Humidity);
+//    }
 
-    public static bool operator !=(WeatherData? left, WeatherData? right)
-    {
-        return !(left == right);
-    }
+//    public static bool operator ==(WeatherData? left, WeatherData? right)
+//    {
+//        return EqualityComparer<WeatherData>.Default.Equals(left, right);
+//    }
+
+//    public static bool operator !=(WeatherData? left, WeatherData? right)
+//    {
+//        return !(left == right);
+//    }
 }
