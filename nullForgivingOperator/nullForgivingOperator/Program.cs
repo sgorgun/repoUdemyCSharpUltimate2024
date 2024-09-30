@@ -1,6 +1,15 @@
-﻿
+﻿#nullable disable
+string text = null;
+#nullable enable
+string otherText = null;
+SomeMethod(otherText);
 
 Console.ReadKey();
+
+void SomeMethod<T>(T input) where T : class?
+{
+    Console.WriteLine(input);
+}
 
 void OddClassInit_ShallThrowExceptionWhenGivenNull()
 {
