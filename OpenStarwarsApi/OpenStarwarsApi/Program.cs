@@ -2,13 +2,17 @@
 using OpenStarwarsApi.MockApiDataAccess;
 using System.Text.Json;
 
-var baseAddress = "https://swapi.dev/";
-var requestUri = "api/planets";
-
-IApiDataReader apiDataReader = new ApiDataReader();
-var json = await apiDataReader.Read(baseAddress, requestUri);
+try
+{
+	await new StarWarsPlanetsStatsApp(
+        new ApiDataReader(),
+        new MockStarWarsApiDataReader()).Run();
+}
+catch (Exception ex)
+{
+    Console.WriteLine("An error occurred. " +
+        "Exception message: " + ex.Message);
+}
 
 Console.WriteLine("Press any key to close.");
-var root = JsonSerializer.Deserialize<Root>(json);
-
 Console.ReadKey();
