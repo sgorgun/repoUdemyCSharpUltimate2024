@@ -45,6 +45,51 @@ public class StarWarsPlanetsStatsApp
         {
             Console.WriteLine(planet);
         }
+
+        Console.WriteLine();
+        Console.WriteLine("The static of which propperty woud you like to see?");
+        Console.WriteLine("population");
+        Console.WriteLine("diameter");
+        Console.WriteLine("surface wather");
+
+        var userChoise = Console.ReadLine();
+
+        if (userChoise == "population")
+        {
+            ShowStatistic(planets, "population", planet => planet.Population);
+        }
+        else if (userChoise == "diameter")
+        {
+            ShowStatistic(planets, "diameter", planet => planet.Diameter);
+        }
+        else if (userChoise == "surface wather")
+        {
+            ShowStatistic(planets, "surface wather", planet => planet.SurfaceWater);
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice.");
+        }
+    }
+
+    private void ShowStatistic(
+        IEnumerable<Planet> planets,
+        string propertyName,
+        Func<Planet, int?> propertySelector)
+    {
+        var planetWithMaxPropertyValue =
+    planets.MaxBy(propertySelector);
+
+        Console.WriteLine($"Max {propertyName} wather is: " +
+            propertySelector(planetWithMaxPropertyValue) +
+            $" planet: {planetWithMaxPropertyValue.Name}");
+
+        var planetWithMinPropertyValue =
+            planets.MinBy(propertySelector);
+
+        Console.WriteLine($"Min {propertyName} wather is: " +
+            propertySelector(planetWithMinPropertyValue) +
+            $" (planet: {planetWithMinPropertyValue.Name})");
     }
 
     private IEnumerable<Planet> ToPlanets(Root? root)
