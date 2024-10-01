@@ -1,10 +1,12 @@
 ﻿
+using OpenStarwarsApi.DTOs;
+
 public readonly record struct Planet
 {
-    public string Name { get;  }
-    public int Diameter { get; }
-    public int? SurfaceWater { get; }
-    public int? Population { get; }
+    public string Name { get; }//can't be null
+    public int Diameter { get; }//can't be null
+    public int? SurfaceWater { get; } //can be null
+    public int? Population { get; } // can be null
 
     public Planet(string name, int diameter, int? surfaceWater, int? population)
     {
@@ -12,5 +14,17 @@ public readonly record struct Planet
         Diameter = diameter;
         SurfaceWater = surfaceWater;
         Population = population;
+    }
+
+    public static explicit operator Planet(Result planetDTO)
+    {
+        var name = planetDTO.Name;
+        int diameter = int.Parse(planetDTO.Diameter);
+        
+        int? population = planetDTO.Population.ToIntOrNull();
+        
+        int? surfaceWater = planetDTO.SurfaceWater.ToIntOrNull();
+
+        return new Planet(name, diameter, surfaceWater, population);
     }
 }

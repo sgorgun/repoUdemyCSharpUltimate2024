@@ -40,6 +40,11 @@ public class StarWarsPlanetsStatsApp
 
         var root = JsonSerializer.Deserialize<Root>(json);
         var planets = ToPlanets(root);
+
+        foreach (var planet in planets)
+        {
+            Console.WriteLine(planet);
+        }
     }
 
     private IEnumerable<Planet> ToPlanets(Root? root)
@@ -49,6 +54,14 @@ public class StarWarsPlanetsStatsApp
             throw new ArgumentNullException(nameof(root));
         }
 
-        throw new NotImplementedException();
+        var planets = new List<Planet>();
+
+        foreach (var planetDTO in root.Results)
+        {
+            Planet planet = (Planet)planetDTO;
+            planets.Add(planet);
+        }
+
+        return planets;
     }
 }
