@@ -1,12 +1,23 @@
-﻿using OpenStarwarsApi.DTOs;
-using OpenStarwarsApi.MockApiDataAccess;
-using System.Text.Json;
+﻿using StarWarsPlanetsStats.ApiDataAccess;
+using StarWarsPlanetsStats.App;
+using StarWarsPlanetsStats.DataAccess;
+using StarWarsPlanetsStats.UserInteraction;
 
 try
 {
-	await new StarWarsPlanetsStatsApp(
-        new ApiDataReader(),
-        new MockStarWarsApiDataReader()).Run();
+    var consoleUserInteractor = new ConsoleUserInteractor();
+    var planetsStatsUserInteractor = 
+        new PlanetsStatsUserInteractor(
+                consoleUserInteractor);
+
+    await new StarWarsPlanetsStatsApp(
+        new PlanetsFromApiReader(
+            new ApiDataReader(),
+            new MockStarWarsApiDataReader(),
+            consoleUserInteractor),
+        new PlanetsStatisticsAnalyzer(
+            planetsStatsUserInteractor),
+        planetsStatsUserInteractor).Run();
 }
 catch (Exception ex)
 {

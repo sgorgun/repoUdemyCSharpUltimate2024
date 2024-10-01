@@ -1,4 +1,4 @@
-﻿namespace OpenStarwarsApi.MockApiDataAccess;
+﻿namespace StarWarsPlanetsStats.ApiDataAccess;
 
 public interface IApiDataReader
 {

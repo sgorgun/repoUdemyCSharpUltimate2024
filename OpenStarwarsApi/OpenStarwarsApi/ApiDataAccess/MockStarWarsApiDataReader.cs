@@ -1,4 +1,4 @@
-﻿namespace OpenStarwarsApi.MockApiDataAccess;
+﻿namespace StarWarsPlanetsStats.ApiDataAccess;
 
 //you can use this class in case SWAPI is down
 public class MockStarWarsApiDataReader : IApiDataReader
