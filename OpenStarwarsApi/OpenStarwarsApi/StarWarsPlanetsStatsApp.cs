@@ -1,5 +1,6 @@
 ﻿using OpenStarwarsApi.DTOs;
 using OpenStarwarsApi.MockApiDataAccess;
+using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
@@ -38,5 +39,16 @@ public class StarWarsPlanetsStatsApp
         }
 
         var root = JsonSerializer.Deserialize<Root>(json);
+        var planets = ToPlanets(root);
+    }
+
+    private IEnumerable<Planet> ToPlanets(Root? root)
+    {
+        if (root == null)
+        {
+            throw new ArgumentNullException(nameof(root));
+        }
+
+        throw new NotImplementedException();
     }
 }
