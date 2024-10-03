@@ -26,6 +26,9 @@ foreach (var item in customCollection)
     Console.WriteLine(item);
 }
 
+var first = customCollection[0];
+customCollection[1] = "abc";
+
 Console.ReadKey();
 
 public class CustomCollection : IEnumerable<string>
@@ -35,6 +38,12 @@ public class CustomCollection : IEnumerable<string>
     public CustomCollection(string[] words)
     {
         Words = words;
+    }
+
+    public string this[int index]
+    {
+        get => Words[index];
+        set => Words[index] = value;
     }
 
     IEnumerator IEnumerable.GetEnumerator() //expisit interface. Can't be public
