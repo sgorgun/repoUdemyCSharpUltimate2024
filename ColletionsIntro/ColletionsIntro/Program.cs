@@ -1,22 +1,5 @@
 ﻿using System.Collections;
 
-//var text = "hello there";
-
-//foreach(char character in text)
-//{
-//    Console.WriteLine(character);
-//}
-
-//var words = new string[] { "aaa", "bbb", "ccc" };
-
-//IEnumerator wordsEnumerator = words.GetEnumerator();
-//object currentWord;
-//while(wordsEnumerator.MoveNext())
-//{
-//    currentWord = wordsEnumerator.Current;
-//    Console.WriteLine(currentWord);
-//}
-
 var customCollection = new CustomCollection(
     new string[] { "aaa", "bbb", "ccc" });
 var enumerator = customCollection.GetEnumerator();
@@ -26,34 +9,21 @@ foreach (var item in customCollection)
     Console.WriteLine(item);
 }
 
-var first = customCollection[0];
-customCollection[1] = "abc";
+var numbers = new List<int> { 1, 2, 3, 4, 5 };
+var array = new int[10];
+numbers.CopyTo(array, 2);
 
-var newCollection = new CustomCollection
-{
-    "one", "two", "three"
-};
-
+var numbers2 = new List<int>(new int[] { 1, 2, 3 }); // init list with array
 Console.ReadKey();
 
 public class CustomCollection : IEnumerable<string>
 {
     public string[] Words { get; }
 
-    public CustomCollection() // for custom collection initialiser
-    {
-        Words = new string[10];
-    }
 
     public CustomCollection(string[] words)
     {
         Words = words;
-    }
-
-    private int _currentIndex = 0;
-    public void Add(string item) // for custom collection initialiser
-    {
-        Words[_currentIndex++] = item;
     }
 
     public string this[int index]
@@ -66,7 +36,7 @@ public class CustomCollection : IEnumerable<string>
     {
         return GetEnumerator();
     }
-    
+
     public IEnumerator<string> GetEnumerator() //impicit inteface
     {
         return new WordsEnumerator(Words);
