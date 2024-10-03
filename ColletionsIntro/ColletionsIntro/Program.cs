@@ -29,15 +29,31 @@ foreach (var item in customCollection)
 var first = customCollection[0];
 customCollection[1] = "abc";
 
+var newCollection = new CustomCollection
+{
+    "one", "two", "three"
+};
+
 Console.ReadKey();
 
 public class CustomCollection : IEnumerable<string>
 {
     public string[] Words { get; }
 
+    public CustomCollection() // for custom collection initialiser
+    {
+        Words = new string[10];
+    }
+
     public CustomCollection(string[] words)
     {
         Words = words;
+    }
+
+    private int _currentIndex = 0;
+    public void Add(string item) // for custom collection initialiser
+    {
+        Words[_currentIndex++] = item;
     }
 
     public string this[int index]
