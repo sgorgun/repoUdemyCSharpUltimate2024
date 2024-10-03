@@ -14,6 +14,13 @@ var array = new int[10];
 numbers.CopyTo(array, 2);
 
 var numbers2 = new List<int>(new int[] { 1, 2, 3 }); // init list with array
+
+var array2 = new int[] { 1, 2, 3 };
+var implementedInterfaces = array.GetType().GetInterfaces();
+
+ICollection<int> arrayAsCollection = array; // Array under the hud.
+arrayAsCollection.Add(4); // it don't make sence. And it don't compile
+
 Console.ReadKey();
 
 public class CustomCollection : IEnumerable<string>
