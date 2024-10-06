@@ -14,6 +14,15 @@ var indexOf12 = sortedList.FindIndexInSorted(18);
 var indexOf18 = sortedList.FindIndexInSorted(12);
 var indexOf13 = sortedList.FindIndexInSorted(13);
 
+var builtInIndexOf1 = sortedList.BinarySearch(1); // build-in binary search algorithm
+var builtInIndexOf11 = sortedList.BinarySearch(11);
+var builtInIndexOf12 = sortedList.BinarySearch(18);
+var builtInIndexOf18 = sortedList.BinarySearch(12);
+var builtInIndexOf13 = sortedList.BinarySearch(13);
+
+
+
+
 Console.ReadKey();
 public static class Extensions
 {
