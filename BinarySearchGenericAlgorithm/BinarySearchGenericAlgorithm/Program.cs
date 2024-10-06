@@ -8,16 +8,16 @@ var sortedList = new List<int>
     1, 3, 4, 5, 6, 11, 12, 14, 18
 };
 
-var indexOf1 = sortedList.IndexOf(1);
-var indexOf11 = sortedList.IndexOf(11);
-var indexOf12 = sortedList.IndexOf(18);
-var indexOf18 = sortedList.IndexOf(12);
-var indexOf13 = sortedList.IndexOf(13);
+var indexOf1 = sortedList.FindIndexInSorted(1);
+var indexOf11 = sortedList.FindIndexInSorted(11);
+var indexOf12 = sortedList.FindIndexInSorted(18);
+var indexOf18 = sortedList.FindIndexInSorted(12);
+var indexOf13 = sortedList.FindIndexInSorted(13);
 
 Console.ReadKey();
 public static class Extensions
 {
-    public static int? BinarySearch<T>(this IList<T> input, T itemToFind) where T : IComparable<T>
+    public static int? FindIndexInSorted<T>(this IList<T> input, T itemToFind) where T : IComparable<T>
     {
         int leftBound = 0;
         int rightBound = input.Count - 1;
