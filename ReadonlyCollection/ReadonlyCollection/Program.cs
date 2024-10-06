@@ -1,9 +1,10 @@
 ﻿var planets = ReadPlanets();
-planets.Clear();
+var asList = (List<string>)planets;
+asList.Clear();
 
 Console.ReadKey();
 
-List<string> ReadPlanets()
+IEnumerable<string> ReadPlanets()
 {
     var result = new List<string>
     {
