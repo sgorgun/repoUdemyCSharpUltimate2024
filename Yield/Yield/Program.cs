@@ -1,28 +1,23 @@
-﻿var smallSubset = GenerateEvenNumbers()
-    .Skip(5)
-    .Take(10);
+﻿var evenNumbers = GenerateEvenNumbers();
+var firstThreeEvenNumbers = evenNumbers.Take(3).ToList();
 
-foreach (var number in GenerateEvenNumbers())
+foreach (var evenNumber in firstThreeEvenNumbers)
 {
-    if (number == 50)
-    {
-        break;
-    }
-    Console.WriteLine(number);
+    Console.WriteLine($"Number is {evenNumber}");
 }
 
-var firstEvenNumber = GenerateEvenNumbers().First();
+foreach (var evenNumber in firstThreeEvenNumbers)
+{
+    Console.WriteLine($"Number is {evenNumber}");
+}
 
 Console.ReadKey();
 
 IEnumerable<int> GenerateEvenNumbers()
 {
-    var result = new List<int>();
-
     for (int i = 0; i < int.MaxValue; i += 2)
     {
-        result.Add(i);
+        Console.WriteLine($"Yielding {i}");        
+        yield return i;
     }
-
-    return result;
 }
