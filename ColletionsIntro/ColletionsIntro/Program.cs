@@ -47,10 +47,13 @@ public class CustomCollection : IEnumerable<string>
     public IEnumerator<string> GetEnumerator() //impicit inteface
     {
         //return new WordsEnumerator(Words);
-        foreach (var word in Words) // yield iterator is implemented
-        {
-            yield return word;
-        }
+        //foreach (var word in Words) // yield iterator is implemented
+        //{
+        //    yield return word;
+        //}
+
+        IEnumerable<string> words = Words; // / Create an IEnumerable<string> object named "words" and assign it the value of the "Words" property of the CustomCollection class
+        return words.GetEnumerator();
     }
 }
 
