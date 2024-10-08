@@ -19,7 +19,7 @@ var array2 = new int[] { 1, 2, 3 };
 var implementedInterfaces = array.GetType().GetInterfaces();
 
 ICollection<int> arrayAsCollection = array; // Array under the hud.
-arrayAsCollection.Add(4); // it don't make sence. And it don't compile
+//arrayAsCollection.Add(4); // it don't make sence. And it don't compile
 
 Console.ReadKey();
 
@@ -46,7 +46,11 @@ public class CustomCollection : IEnumerable<string>
 
     public IEnumerator<string> GetEnumerator() //impicit inteface
     {
-        return new WordsEnumerator(Words);
+        //return new WordsEnumerator(Words);
+        foreach (var word in Words) // yield iterator is implemented
+        {
+            yield return word;
+        }
     }
 }
 
