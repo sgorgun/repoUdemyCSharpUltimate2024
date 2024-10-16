@@ -1,14 +1,13 @@
 ﻿var test = new TestStruct
 {
-    List = new List<int> { 1, 2, 3 }
+    Text = "abc"
 };
 
-var other = test; //it's copy link. It's unexpected behavior from structure. 
-other.List.Clear();
+var other = test; //with strings it work because strings are immutable.
 
 Console.ReadKey();
 
 public struct TestStruct
 {
-    public List<int> List { get; init; }
+    public string Text { get; init; }
 }
